@@ -26,7 +26,7 @@ function verificarUsuario() {
                 }));
 
 
-                window.location.href = "../html/registrar_users.html"
+                window.location.href = "registrar_users.html"
 
                 
             });
