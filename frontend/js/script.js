@@ -6,8 +6,8 @@ function verificarUsuario() {
     if ([name_admin, password_admin].every(i => typeof i === "string" && i.trim() !== "")) {
 
 
-        // Usar a URL base do ambiente atual
-        const baseURL = window.location.origin;
+        // URL do backend no Render
+        const baseURL = 'https://appbgs.onrender.com';
         
         axios({
             method: 'get',

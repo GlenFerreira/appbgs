@@ -14,8 +14,8 @@ function criarContatos() {
         console.log('Tudo certo por aqui!!')
 
 
-        // Usar a URL base do ambiente atual
-        const baseURL = window.location.origin;
+        // URL do backend no Render
+        const baseURL = 'https://appbgs.onrender.com';
         
         axios.post(`${baseURL}/criarContatos`, {
             name_contact: nomeContato,
