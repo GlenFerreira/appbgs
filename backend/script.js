@@ -4,6 +4,8 @@ import cors from "cors";
 import { supabase } from './supabaseClient.js';
 import { createClient } from '@supabase/supabase-js'
 import bodyParser from 'body-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 export const base = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY);
 
@@ -12,9 +14,15 @@ export const base = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_
 dotenv.config();
 const app = express();
 
-app.use(bodyParser.json());
+// Configuração para servir arquivos estáticos
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+app.use(bodyParser.json());
 app.use(cors());
+
+// Servir arquivos estáticos do frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 
 app.get('/confirmarUser', (req, res) => {
@@ -88,4 +96,8 @@ app.post('/criarContatos', (req, res) => {
 });
 
 
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});

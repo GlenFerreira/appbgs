@@ -6,9 +6,12 @@ function verificarUsuario() {
     if ([name_admin, password_admin].every(i => typeof i === "string" && i.trim() !== "")) {
 
 
+        // Usar a URL base do ambiente atual
+        const baseURL = window.location.origin;
+        
         axios({
             method: 'get',
-            url: 'http://localhost:3000/confirmarUser',
+            url: `${baseURL}/confirmarUser`,
             params: {
                 nome_usuario: name_admin,
                 senha_usuario: password_admin

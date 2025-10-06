@@ -14,7 +14,10 @@ function criarContatos() {
         console.log('Tudo certo por aqui!!')
 
 
-        axios.post('http://localhost:3000/criarContatos', {
+        // Usar a URL base do ambiente atual
+        const baseURL = window.location.origin;
+        
+        axios.post(`${baseURL}/criarContatos`, {
             name_contact: nomeContato,
             email_contact: emailContato,
             telef_contact: telefContato,
